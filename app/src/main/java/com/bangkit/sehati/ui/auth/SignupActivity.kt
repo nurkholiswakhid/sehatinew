@@ -1,4 +1,4 @@
-package com.bangkit.sehati
+package com.bangkit.sehati.ui.auth
 
 import android.content.Intent
 import android.os.Bundle

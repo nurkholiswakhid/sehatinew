@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.sehati.ui.auth.SigninActivity
 
 
 class  MainActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class  MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent  = Intent(this,SigninActivity::class.java)
+            val intent  = Intent(this, SigninActivity::class.java)
             startActivity(intent)
 
             finish()

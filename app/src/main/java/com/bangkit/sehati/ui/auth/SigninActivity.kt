@@ -1,10 +1,11 @@
-package com.bangkit.sehati
+package com.bangkit.sehati.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.sehati.HomeActivity
 import com.bangkit.sehati.databinding.SigninActivityBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -36,7 +37,11 @@ class SigninActivity : AppCompatActivity() {
             startActivity(Intent(this, SignupActivity::class.java))
         }
 
-
+        // Teks "Lupa Password"
+        binding.forgotPassword.setOnClickListener {
+            // Mengarahkan ke ForgotActivity
+            startActivity(Intent(this, ForgotActivity::class.java))
+        }
     }
 
     private fun validateInputs(email: String, password: String): Boolean {
@@ -55,9 +60,6 @@ class SigninActivity : AppCompatActivity() {
             return false
         }
 
-
-
-
         // Reset error jika validasi berhasil
         binding.emailLayoutLogin.error = null
         binding.passwordLayoutLogin.error = null
@@ -69,14 +71,12 @@ class SigninActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
-                    // Lanjutkan ke halaman berikutnya (contoh: MainActivity)
-                    startActivity(Intent(this, MainActivity::class.java))
+                    // Lanjutkan ke halaman berikutnya (contoh: Home_Activity)
+                    startActivity(Intent(this, HomeActivity ::class.java))
                     finish()
                 } else {
                     Toast.makeText(this, "Login gagal: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                 }
             }
     }
-
-
 }
