@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "698697981222",
+    "project_id": "capstone-project-442701",
+    "storage_bucket": "capstone-project-442701.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698697981222:android:28fc3aff0a4f0daf3935e7",
+        "android_client_info": {
+          "package_name": "com.bangkit.sehati"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFyjj39vyRl1UxSquKinYrk_ed4_vBCq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
