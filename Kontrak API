@@ -1,0 +1,179 @@
+
+Berikut adalah dokumentasi API untuk setiap kebutuhan 
+
+1. API Registrasi Pengguna
+Endpoint: /auth/register
+Method: POST
+Kegunaan: Untuk registrasi pengguna baru.
+Request Header: 
+Content-Type: application/json
+Request Body (JSON): 
+{
+  "email": "example@mail.com",
+  "password": "password123",
+  "firstName": "John",
+  "lastName": "Doe"
+}
+Response (Success): 
+{
+  "success": true,
+  "message": "Registration successful",
+  "data": {
+    "userId": "unique_user_id"
+  }
+}
+Catatan: Data akan disimpan di Firebase Authentication dan Firestore.
+
+2. API Login Pengguna
+Endpoint: /auth/login
+Method: POST
+Kegunaan: Untuk login pengguna.
+Request Header: 
+Content-Type: application/json
+Request Body (JSON): 
+{
+  "email": "example@mail.com",
+  "password": "password123"
+}
+Response (Success): 
+{
+  "success": true,
+  "message": "Login successful",
+  "data": {
+    "userId": "unique_user_id",
+    "token": "auth_token"
+  }
+}
+Catatan: Token digunakan untuk mengakses endpoint yang membutuhkan autentikasi.
+
+3. API Menyimpan Data Pengguna di Firestore
+Endpoint: /users/{userId}
+Method: POST
+Kegunaan: Menyimpan data tambahan pengguna setelah registrasi.
+Request Header: 
+Authorization: Bearer <auth_token>
+Content-Type: application/json
+Request Body (JSON): 
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "example@mail.com"
+}
+Response (Success): 
+{
+  "success": true,
+  "message": "User data saved successfully"
+}
+
+
+4. API Pendeteksi Kesehatan dengan Gejala
+Endpoint: /health/diagnose
+Method: POST
+Kegunaan: Mendiagnosis penyakit berdasarkan gejala pengguna.
+Request Header: 
+Authorization: Bearer <auth_token>
+Content-Type: application/json
+Request Body (JSON): 
+{
+  "symptoms": ["fever", "cough", "headache"]
+}
+Response (Success): 
+{
+  "success": true,
+  "message": "Diagnosis successful",
+  "data": {
+    "diagnosis": "Common Cold",
+    "confidence": 0.85
+  }
+}
+
+
+5. API Menyimpan Riwayat Kesehatan
+Endpoint: /history
+Method: POST
+Kegunaan: Menyimpan riwayat pemeriksaan kesehatan.
+Request Header: 
+Authorization: Bearer <auth_token>
+Content-Type: application/json
+Request Body (JSON): 
+{
+  "userId": "unique_user_id",
+  "symptoms": ["fever", "cough"],
+  "diagnosis": "Common Cold",
+  "timestamp": "2024-12-01T10:00:00Z"
+}
+Response (Success): 
+{
+  "success": true,
+  "message": "Health history saved successfully"
+}
+
+
+6. API Mendapatkan Riwayat Kesehatan
+Endpoint: /history/{userId}
+Method: GET
+Kegunaan: Mengambil riwayat kesehatan berdasarkan ID pengguna.
+Request Header: 
+Authorization: Bearer <auth_token>
+Response (Success): 
+{
+  "success": true,
+  "message": "Health history fetched successfully",
+  "data": [
+    {
+      "symptoms": ["fever", "cough"],
+      "diagnosis": "Common Cold",
+      "timestamp": "2024-12-01T10:00:00Z"
+    }
+  ]
+}
+
+7. API Mengedit Data Pengguna
+Endpoint: /users/{userId}
+Method: PUT
+Kegunaan: Mengubah data pengguna.
+Request Header: 
+Authorization: Bearer <auth_token>
+Content-Type: application/json
+Request Body (JSON): 
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "email": "newemail@mail.com"
+}
+Response (Success): 
+{
+  "success": true,
+  "message": "User data updated successfully"
+}
+8. API Rekomendasi Kesehatan
+Endpoint: ?
+Method: POST
+Kegunaan: Membuat konten rekomendasi kesehatan.
+Request Header: 
+Authorization: ?
+Content-Type: ?
+Request Body (JSON): 
+{
+  "contents": [{
+    "role": "user",
+    "parts": [{
+      "text": "”
+    }]
+  }]
+}
+Response (Success): 
+
+
+
+
+
+
+
+
+Catatan Tambahan
+Autentikasi: Semua endpoint, kecuali registrasi dan login, memerlukan autentikasi menggunakan token yang dikirimkan dalam header permintaan.
+Error Handling: Pastikan setiap permintaan memiliki validasi error untuk mencegah data tidak valid.
+Integrasi Firebase: Gunakan Firebase SDK untuk menghubungkan backend dengan layanan Firebase Authentication dan Firestore.
+
+
